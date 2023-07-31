@@ -25,14 +25,19 @@ function TableClient(props) {
         setIsUpdateId(prev=>prev=0)
      }
 
+     const getColorRow = (value)=>{
+        if(value> 0) return cs.red
+        
+     }
+
     return (
         <div className={cs.tab}>
             {props.client.map(c => 
-            <div>
+            <div>                
                 <span>
                         {c.lineId!==isUpdateId? 
-                            <table key={c.Id} className={cs.tab_total}>
-                            <tr onClick={(e)=>{UpdateClic(e,c.lineId, c.date)}}>
+                            <table  key={c.Id} className={cs.tab_total}>
+                            <tr className={getColorRow(c.lineId)} onClick={(e)=>{UpdateClic(e,c.lineId, c.date)}}>
                                 <td className={cs.tdTime}>{c.time}</td>
                                 <td className={cs.tdClient}>{c.clientName}</td>
                                 <td className={cs.tdSevice}>{c.procedureName}</td>
