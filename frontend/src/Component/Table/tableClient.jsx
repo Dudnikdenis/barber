@@ -32,13 +32,12 @@ function TableClient(props) {
                 <span>
                         {c.lineId!==isUpdateId? 
                         <table key={c.Id} className={cs.tab_total}>
-                        <tr>
+                        <tr onClick={(e)=>{UpdateClic(e,c.lineId, c.date)}}>
                             <td className={cs.tdTime}>{c.time}</td>
                             <td className={cs.tdClient}>{c.clientName}</td>
                             <td className={cs.tdSevice}>{c.procedureName}</td>
                             <td className={cs.tdSevice}>{c.comment} </td>
                             <button onClick = {e=>onClicDelite(e, c.lineId)}>Удалить</button>
-                            <button onClick={(e)=>{UpdateClic(e,c.lineId, c.date)}}>Изменить</button>
                         </tr>
                         </table> :
                             <RecordsReduxForm onSubmit={UpdateRecrdse} records={c} />
