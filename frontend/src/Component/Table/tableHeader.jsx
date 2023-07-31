@@ -42,8 +42,7 @@ let TableHeader = (props) => {
     }
 
     const onDelite = (lineId) => {
-        props.deliteRecordsUser(usId, lineId, "01-01-2020", "02-01-2020"); //usId, , "01-01-2020", "02-01-2020"
-        //props.getClient(usId, "01-01-2020", "02-01-2020");
+        props.deliteRecordsUser(usId, lineId, "01-01-2020", "02-01-2020");
         
      }
   
@@ -66,7 +65,10 @@ let TableHeader = (props) => {
                 {props.master.master.map(m=>
                 <div>
                     <div className={cs.header}>{m.date}</div> 
-                    {m.userRecords.length===0? "Нет записей": <TableClient UpdateRecordse={UpdateRecordse} masterId={{usId:usId, usName:usName}} onDelete={onDelite} client={m.userRecords} {...props}/>}
+                    {m.userRecords.length===0? "Нет записей": <TableClient UpdateRecordse={UpdateRecordse}
+                     masterId={{usId:usId, usName:usName}} 
+                     onDelete={onDelite}
+                      client={m.userRecords} {...props}/>}
                 </div>
                 )
             }

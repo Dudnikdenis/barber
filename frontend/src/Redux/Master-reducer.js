@@ -11,7 +11,8 @@ const SET_IS_DID_MOUNT = "SET_IS_DID_MOUNT"
 const DELITE_CLIENT = "DELITE_CLIENT"
 
 let initialState = {
-    master:[]
+    master:[],
+    workTime:["8:00","8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30"]
     
 };
 
@@ -19,11 +20,51 @@ let masterReducer = (state = initialState, action) => {
     let stateCopy;
     switch (action.type){
         case SET_CLIENT: 
-        stateCopy = {master:[]};
+        
+        stateCopy = {...state,master:[]};
         stateCopy.master.push(...action.master);
         
         for (let i = 0;i<action.master.length;i++){
-            stateCopy.master[i].userRecords=[ ...action.master[i].userRecords];
+            for(let j=0;j<stateCopy.workTime.length;j++){
+                //stateCopy.master[i].userRecords=[];
+                if(action.master[i].userRecords[j]!==undefined){
+                    if(action.master[i].userRecords[j].time===state.workTime[j])
+                    {
+                        stateCopy.master[i].userRecords=[ ...action.master[i].userRecords];
+                    }
+                    else
+                    {
+                        stateCopy.master[i].userRecords.push({
+                            "lineId": 0,
+                            "userId": `${stateCopy.master[i].userId}`,
+                            "date": `${stateCopy.master[i].date}`,
+                            "time": `${state.workTime[j]}`,
+                            "clientName": "",
+                            "procedureName": "",
+                            "procedureCost": "",
+                            "procedureDiscount": "%",
+                            "comment": ""
+                        });
+                
+                };
+                }
+                else
+                    {
+                        stateCopy.master[i].userRecords.push({
+                            "lineId": 0,
+                            "userId": `${stateCopy.master[i].userId}`,
+                            "date": `${stateCopy.master[i].date}`,
+                            "time": `${state.workTime[j]}`,
+                            "clientName": "",
+                            "procedureName": "",
+                            "procedureCost": "",
+                            "procedureDiscount": "%",
+                            "comment": ""
+                        });
+                
+                }
+            }
+            
         }
         action.master = [];
         return stateCopy;
