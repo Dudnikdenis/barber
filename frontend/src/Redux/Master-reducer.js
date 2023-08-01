@@ -22,7 +22,7 @@ let masterReducer = (state = initialState, action) => {
         case SET_CLIENT: 
         
         stateCopy = {...state,master:[]};
-        
+        let Idrecordse = 0;
         for (let i = 0;i<action.master.length;i++){
             let recordseIndex = 0;
             
@@ -40,6 +40,7 @@ let masterReducer = (state = initialState, action) => {
                     if(time&& action.master[i].userRecords[recordseIndex].time===state.workTime[j])
                     {
                         stateCopy.master[i].userRecords.push({
+                                "ID": Idrecordse,
                                 "lineId": `${action.master[i].userRecords[recordseIndex].lineId}`,
                                 "userId": `${action.master[i].userRecords[recordseIndex].userId}`,
                                 "date": `${action.master[i].userRecords[recordseIndex].date}`,
@@ -50,6 +51,7 @@ let masterReducer = (state = initialState, action) => {
                                 "procedureDiscount": `${action.master[i].userRecords[recordseIndex].procedureDiscount}`,
                                 "comment": `${action.master[i].userRecords[recordseIndex].comment}`
                             });
+                            Idrecordse++;
                             if(action.master[i].userRecords.length>=recordseIndex){
                                 recordseIndex++;
                             }
@@ -57,6 +59,7 @@ let masterReducer = (state = initialState, action) => {
                     else
                     {
                         stateCopy.master[i].userRecords.push({
+                            "ID": Idrecordse,
                             "lineId": -1,
                             "userId": `${stateCopy.master[i].userId}`,
                             "date": `${stateCopy.master[i].date}`,
@@ -67,11 +70,13 @@ let masterReducer = (state = initialState, action) => {
                             "procedureDiscount": "%",
                             "comment": ""
                         });
+                        Idrecordse++;
                     }
                 }
                 else if(time&& action.master[i].userRecords[recordseIndex].time===state.workTime[j])
                     {
                         stateCopy.master[i].userRecords.push({
+                                "ID": Idrecordse,
                                 "lineId": `${action.master[i].userRecords[recordseIndex].lineId}`,
                                 "userId": `${action.master[i].userRecords[recordseIndex].userId}`,
                                 "date": `${action.master[i].userRecords[recordseIndex].date}`,
@@ -82,6 +87,7 @@ let masterReducer = (state = initialState, action) => {
                                 "procedureDiscount": `${action.master[i].userRecords[recordseIndex].procedureDiscount}`,
                                 "comment": `${action.master[i].userRecords[recordseIndex].comment}`
                             });
+                            Idrecordse++;
                             if(action.master[i].userRecords.length>=recordseIndex){
                                 recordseIndex++;
                             }
@@ -89,6 +95,7 @@ let masterReducer = (state = initialState, action) => {
                     else
                     {
                         stateCopy.master[i].userRecords.push({
+                            "ID": Idrecordse,
                             "lineId": -1,
                             "userId": `${stateCopy.master[i].userId}`,
                             "date": `${stateCopy.master[i].date}`,
@@ -99,6 +106,7 @@ let masterReducer = (state = initialState, action) => {
                             "procedureDiscount": "%",
                             "comment": ""
                         });
+                        Idrecordse++;
                     }
             }
         }

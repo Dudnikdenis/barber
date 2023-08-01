@@ -10,37 +10,48 @@ let TableHeader = (props) => {
     const location = useLocation();
     const { usName, usId } = location.state;
 
-    const AddClient = (formData) => {
-        let result = {
+    // const AddClient = (formData) => {
+    //     UpdateRecordse(formData, date, lineId);
+        
+    // }
 
-            "clientName": `${formData.clientName}`,
-            "comment": `${formData.comment}`,
-            "date": `${formData.date}`,
-            "lineId": "0",
-            "procedureCost": "1000",
-            "procedureDiscount": "10%",
-            "procedureName": `${formData.service}`,
-            "time": `${formData.time}`,
-            "userId": `${usId}`
+    const UpdateRecordse = (formData, date, lineId, time) => {
+
+        if(lineId ===-1)
+        {
+            //add
+            let result = {
+                "clientName": `${formData.clientName}`,
+                "comment": `${formData.comment}`,
+                "date": `${date}`,
+                "lineId": "0",
+                "procedureCost": "1000",
+                "procedureDiscount": "10%",
+                "procedureName": `${formData.service}`,
+                "time": `${time}`,
+                "userId": `${usId}`
+            }
+            props.addRecordsUser(usId, result,"01-01-2020", "02-01-2020");
         }
-        props.addRecordsUser(usId, result,"01-01-2020", "02-01-2020");
-    }
-
-    const UpdateRecordse = (formData, date, lineId) => {
-        let result = {
-            "lineId": `${lineId}`,
-            "userId": `${usId}`,
-            "date": `${date}`,
-            "time": `${formData.time}`,
-            "clientName": `${formData.clientName}`,
-            "procedureName": `${formData.service}`,
-            "procedureCost": "1000",
-            "procedureDiscount": "10%",
-            "comment": `${formData.comment}`
+        else 
+        {
+            //update
+            let result = {
+                "lineId": `${lineId}`,
+                "userId": `${usId}`,
+                "date": `${date}`,
+                "time": `${time}`,
+                "clientName": `${formData.clientName}`,
+                "procedureName": `${formData.service}`,
+                "procedureCost": "1000",
+                "procedureDiscount": "10%",
+                "comment": `${formData.comment}`
+            }
+            props.updateRecordsUser(usId, lineId, result, "01-01-2020", "02-01-2020")
         }
-        props.updateRecordsUser(usId, lineId, result, "01-01-2020", "02-01-2020")
     }
-
+    let date = new Date();
+    console.log(date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear());//+"-"+getMonth()+"-"+getFullYear()
     const onDelite = (lineId) => {
         props.deliteRecordsUser(usId, lineId, "01-01-2020", "02-01-2020");
         
@@ -73,7 +84,7 @@ let TableHeader = (props) => {
                 )
             }
             </div> 
-            <ClientAddReduxForm onSubmit={AddClient}></ClientAddReduxForm>
+            {/* <ClientAddReduxForm onSubmit={AddClient}></ClientAddReduxForm> */}
             
         </div>
         

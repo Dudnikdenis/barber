@@ -8,21 +8,26 @@ import cs from './table.module.css';
 function TableClient(props) {
 
     const [isUpdateId, setIsUpdateId] = useState(0);
+    const [isId, setIsId] = useState(-1);
     const [isUpdateDate, setIsUpdateDate] = useState("");
+    const [isUpdateTime, setIsUpdateTime] = useState("");
     const onClicDelite = (e,lineId) => {
        props.onDelete(lineId);    
     }
 
-    const UpdateClic = (e,lineId, date) => {
+    const UpdateClic = (e,lineId, date,id, time) => {
         setIsUpdateId(prev=>prev=lineId);
         setIsUpdateDate(prev=>prev=date);
+        setIsId(prev=>prev=id);
+        setIsUpdateTime(prev=>prev=time)
      }
 
      const UpdateRecrdse = (formData) => {
         
-        props.UpdateRecordse(formData,isUpdateDate, isUpdateId);
+        props.UpdateRecordse(formData,isUpdateDate, isUpdateId,isUpdateTime);
         setIsUpdateDate(prev=>prev="");
-        setIsUpdateId(prev=>prev=0)
+        setIsUpdateId(prev=>prev=0);
+        setIsId(prev=>prev=-1);
      }
 
      const getColorRow = (value)=>{
@@ -35,9 +40,9 @@ function TableClient(props) {
             {props.client.map(c => 
             <div>                
                 <span>
-                        {c.lineId!==isUpdateId? 
+                        {c.ID!==isId? 
                             <table  key={c.Id} className={cs.tab_total}>
-                            <tr className={getColorRow(c.lineId)} onClick={(e)=>{UpdateClic(e,c.lineId, c.date)}}>
+                            <tr className={getColorRow(c.lineId)} onClick={(e)=>{UpdateClic(e,c.lineId, c.date, c.ID,c.time)}}>
                                 <td className={cs.tdTime}>{c.time}</td>
                                 <td className={cs.tdClient}>{c.clientName}</td>
                                 <td className={cs.tdSevice}>{c.procedureName}</td>
