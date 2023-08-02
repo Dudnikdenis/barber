@@ -1,11 +1,30 @@
 import React, {useState,useEffect} from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import RecordsReduxForm from "./recordsForm";
+import RecordsReduxFormTest from "./recordsFormTest";
 import cs from './table.module.css';
+import { FormProvider,  useFieldArray, useForm } from "react-hook-form";
 
 
 
 function TableClient(props) {
+
+    const methods = useForm({
+        defaultValues: {
+            recordse: []
+      }});
+    const { control, handleSubmit, reset } = methods
+
+
+    const { fields } = useFieldArray({
+        name: "recordse",
+        control: control,
+        shouldUnregister: true
+      })
+
+      reset({
+        users: props.client
+      })
 
     const [isUpdateId, setIsUpdateId] = useState(0);
     const [isId, setIsId] = useState(-1);
@@ -51,13 +70,33 @@ function TableClient(props) {
                             </tr>
                             </table> 
                             :
-                            <RecordsReduxForm onSubmit={UpdateRecrdse} records={c} />
+                            <FormProvider {...methods}>
+                                <RecordsReduxFormTest />
+                                <button onClick={handleSubmit(UpdateRecrdse)}>Сохранить</button>
+                            </FormProvider>
+                            // <form onSubmit={props.handleSubmit}> 
+                            //     <lable></lable> 
+                            //     <input {...register(`client.7.clientName`)}  name={"clientName"}  />
+                            //     <input {...register("lastName")} name={"service"} />
+                            //     <input name={"comment"} />
+                            //     <button>Сохранить</button>
+                            // </form> 
+                            // <RecordsReduxForm onSubmit={UpdateRecrdse} records={c} />
                             }
                 </span>
-            </div>)}              
+                
+            </div>)}  
+
+            {/* <RecordsReduxFormTest onSubmit={UpdateRecrdse} register={register}/> */}
+            {/* <form>
+                <input {...register("firstName")} /> 
+            </form>             */}
         </div>
         
     )
 }
 
 export default TableClient;
+
+
+//https://habr.com/ru/articles/746806/
