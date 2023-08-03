@@ -9,11 +9,8 @@ import { FormProvider,  useFieldArray, useForm } from "react-hook-form";
 
 function TableClient(props) {
 
-    const methods = useForm({
-        defaultValues: {
-            recordse: []
-      }});
-    const { control, handleSubmit, reset } = methods
+    const methods = useForm();
+    const { control, handleSubmit } = methods
 
 
     const { fields } = useFieldArray({
@@ -22,9 +19,7 @@ function TableClient(props) {
         shouldUnregister: true
       })
 
-      reset({
-        users: props.client
-      })
+     
 
     const [isUpdateId, setIsUpdateId] = useState(0);
     const [isId, setIsId] = useState(-1);
@@ -43,10 +38,11 @@ function TableClient(props) {
 
      const UpdateRecrdse = (formData) => {
         
-        props.UpdateRecordse(formData,isUpdateDate, isUpdateId,isUpdateTime);
-        setIsUpdateDate(prev=>prev="");
-        setIsUpdateId(prev=>prev=0);
-        setIsId(prev=>prev=-1);
+        console.log(formData);
+        // props.UpdateRecordse(formData,isUpdateDate, isUpdateId,isUpdateTime);
+        // setIsUpdateDate(prev=>prev="");
+        // setIsUpdateId(prev=>prev=0);
+        // setIsId(prev=>prev=-1);
      }
 
      const getColorRow = (value)=>{
@@ -71,7 +67,7 @@ function TableClient(props) {
                             </table> 
                             :
                             <FormProvider {...methods}>
-                                <RecordsReduxFormTest />
+                                <RecordsReduxFormTest recordse={c} />
                                 <button onClick={handleSubmit(UpdateRecrdse)}>Сохранить</button>
                             </FormProvider>
                             // <form onSubmit={props.handleSubmit}> 
@@ -84,13 +80,7 @@ function TableClient(props) {
                             // <RecordsReduxForm onSubmit={UpdateRecrdse} records={c} />
                             }
                 </span>
-                
             </div>)}  
-
-            {/* <RecordsReduxFormTest onSubmit={UpdateRecrdse} register={register}/> */}
-            {/* <form>
-                <input {...register("firstName")} /> 
-            </form>             */}
         </div>
         
     )

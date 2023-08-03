@@ -4,27 +4,45 @@ import { Controller, useFormContext } from "react-hook-form"
 const RecordsReduxFormTest = (props) => {
 
     const { control } = useFormContext();
-    const { user: { name, suname }, userIndex } = props
+    //const { user: { name, suname }, userIndex } = props
     return (
 
-        <div className="card">
-            <span>Пользователь</span>
+        <div >
+            <span>{props.recordse.time}</span>
             <Controller
                 name="name"
                 control={control}
                 render={({ field: { value, onChange } }) => (
-                    <input></input>
+                    <input value={props.recordse.clientName} onChange={onChange}></input> //props.recordse.clientName
                 )}
             />
             <Controller
                 name="suname"
                 control={control}
                 render={({ field: { value, onChange } }) => (
-                    <input></input>
+                    <input value={props.recordse.procedureName} onChange={onChange}></input>
                 )}
             />
       </div>
-
+// ID: 1
+// ​
+// clientName: "Сергей"
+// ​
+// comment: "Предупредить за 30 мин"
+// ​
+// date: "01-01-2020"
+// ​
+// lineId: "1"
+// ​
+// procedureCost: "1000"
+// ​
+// procedureDiscount: "10%"
+// ​
+// procedureName: "Ногти"
+// ​
+// time: "08:30"
+// ​
+// userId: "1"
 
             // <form onSubmit={props.handleSubmit}> 
             //     <lable></lable> 
