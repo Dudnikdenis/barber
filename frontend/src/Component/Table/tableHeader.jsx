@@ -72,10 +72,10 @@ let TableHeader = (props) => {
                 <Link className={cs.link} to="/users">Назад</Link>
             </span>
            <div>
-                <div className={cs.header}>{usName}</div>
+                <div className={cs.user}>{usName}</div>
                 {props.master.master.map(m=>
                 <div>
-                    <div className={cs.header}>{m.date}</div> 
+                    <div className={cs.time}>{m.date}</div> 
                     {m.userRecords.length===0? "Нет записей": <TableClient UpdateRecordse={UpdateRecordse}
                      masterId={{usId:usId, usName:usName}} 
                      onDelete={onDelite}
