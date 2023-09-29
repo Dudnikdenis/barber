@@ -12,17 +12,21 @@ const RecordsReduxFormTest = (props) => {
             <Controller
                 name="name"
                 control={control}
-                render={({ field: { value, onChange } }) => (
-                    <input value={props.recordse.clientName} onChange={onChange}></input> //props.recordse.clientName
+                render={({ field: { value, onChange } }) => (<>
+                    <input value={props.recordse.clientName} onChange={onChange}></input> 
+                    <input value={props.recordse.procedureName} onChange={onChange}></input>
+                    <input value={props.recordse.procedureName} onChange={onChange}></input>
+                </>
+                    
                 )}
             />
-            <Controller
+            {/* <Controller
                 name="suname"
                 control={control}
                 render={({ field: { value, onChange } }) => (
                     <input value={props.recordse.procedureName} onChange={onChange}></input>
                 )}
-            />
+            /> */}
       </div>
 // ID: 1
 // ​

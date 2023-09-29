@@ -59,9 +59,9 @@ function TableClient(props) {
                             <table  key={c.Id} className={cs.tab_total}>
                             <tr className={getColorRow(c.lineId)} onClick={(e)=>{UpdateClic(e,c.lineId, c.date, c.ID,c.time)}}>
                                 <td className={cs.tdTime}>{c.time}</td>
-                                <td className={cs.tdClient}>{c.clientName}</td>
-                                <td className={cs.tdSevice}>{c.procedureName}</td>
-                                <td className={cs.tdSevice}>{c.comment} </td>
+                                <td className={cs.tdClient} >{c.clientName}</td>
+                                <td className={cs.tdSevice} >{c.procedureName}</td>
+                                <td className={cs.tdSevice} >{c.comment} </td>
                                 <button onClick = {e=>onClicDelite(e, c.lineId)}>Удалить</button>
                             </tr>
                             </table> 
