@@ -20,13 +20,6 @@ const RecordsReduxFormTest = (props) => {
                     
                 )}
             />
-            {/* <Controller
-                name="suname"
-                control={control}
-                render={({ field: { value, onChange } }) => (
-                    <input value={props.recordse.procedureName} onChange={onChange}></input>
-                )}
-            /> */}
       </div>
 // ID: 1
 // ​
