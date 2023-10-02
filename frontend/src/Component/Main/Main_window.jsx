@@ -7,6 +7,7 @@ import {
     Route,
   } from 'react-router-dom'
   import ClientPage from "../ClientPage/clientPage";
+import DateSelection from "../Table/DateSelection";
 //import cs from './main_window.module.css'
 
 function Main(){    
@@ -15,7 +16,8 @@ function Main(){
             <BrowserRouter>
                     <Routes>
                         <Route path='/' element = {<ClientPage/>  }/>
-                        <Route path='/users' element = {<UserContainer/>  }/>    
+                        <Route path='/users' element = {<UserContainer/>  }/>
+                        <Route path='/dateSelection' element = {<DateSelection/>  }/>    
                         <Route path='/records/user/:userID' element = {<TableContainer/>  }/>
                         <Route path='/records/line' element = {<RecordsReduxForm/>  }/>
                     </Routes>

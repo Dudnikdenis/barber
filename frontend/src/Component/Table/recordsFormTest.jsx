@@ -1,5 +1,6 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form"
+import cs from './table.module.css';
 
 const RecordsReduxFormTest = (props) => {
 
@@ -8,14 +9,16 @@ const RecordsReduxFormTest = (props) => {
     return (
 
         <div >
-            <span>{props.recordse.time}</span>
             <Controller
                 name="name"
                 control={control}
                 render={({ field: { value, onChange } }) => (<>
-                    <input value={props.recordse.clientName} onChange={onChange}></input> 
-                    <input value={props.recordse.procedureName} onChange={onChange}></input>
-                    <input value={props.recordse.procedureName} onChange={onChange}></input>
+                        <td className={cs.tdTime}>{props.recordse.time}</td>
+                        <td className={cs.tdClient}><input className={cs.inputTable} value={props.recordse.clientName} onChange={onChange}></input> </td>
+                        <td className={cs.tdSevice}><input className={cs.inputTable} value={props.recordse.procedureName} onChange={onChange}></input></td>
+                        <td className={cs.tdSevice}><input className={cs.inputTable} value={props.recordse.procedureName} onChange={onChange}></input></td>
+                    
+                    
                 </>
                     
                 )}

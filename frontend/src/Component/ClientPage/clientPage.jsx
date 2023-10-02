@@ -17,6 +17,9 @@ const ClientPage = () => {
                  <Link className={cs.link} to="/users" >Users</Link>
              </span>
              <span className={cs.divLink}>
+                 <Link className={cs.link} to="/dateSelection" >dateSelection</Link>
+             </span>
+             <span className={cs.divLink}>
                  <Link className={cs.link} to="/" >Отзывы </Link>
              </span>
              <span className={cs.divLink}>
