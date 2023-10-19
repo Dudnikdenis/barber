@@ -1,19 +1,39 @@
 import React from "react";
-import { Field, reduxForm } from 'redux-form'
+import { useForm } from "react-hook-form";
+import cs from './table.module.css';
 
 
-const RecordsForm = (props) => {
+const RecordsReduxForm = (props) => {
+
+    const { register, handleSubmit } = useForm({
+        defaultValues: {
+            clientName: props.records.clientName,
+            service: props.records.procedureName,
+            comment: props.records.comment,
+        },
+      });
+
+    const submit = (formData) =>{
+        props.Update(formData);
+    }
+
+    const blur = () =>{
+        props.UpdateOnBlur();
+    }
+
     return (
-            <form onSubmit={props.handleSubmit}> 
-                <lable>{props.records.time}</lable> 
-                <Field placeholder={props.records.clientName} component = {"input"} name={"clientName"}  />
-                <Field placeholder={props.records.procedureName} component = {"input"} name={"service"} />
-                <Field placeholder={props.records.comment} component = {"input"} name={"comment"} />
-                <button>Сохранить</button>
+            <form onSubmit={handleSubmit(submit)}> 
+                <table className={cs.tab_total}>
+                    <tr onBlur={blur}>
+                        <td className={cs.tdTimeForm}>{props.records.time}</td>
+                        <td><input className={cs.tdClientForm} {...register("clientName")}  type="text" /></td>
+                        <td><input className={cs.tdSeviceForm} {...register("service")}  type="text" /></td>
+                        <td><input className={cs.tdSeviceForm} {...register("comment")}  type="text" /></td>
+                    </tr>
+                </table>
+                <button className={cs.but}>Сохранить</button>
             </form> 
     )
 }
-
-const RecordsReduxForm = reduxForm({form: 'RecordsForm'})(RecordsForm)
 
 export default RecordsReduxForm;

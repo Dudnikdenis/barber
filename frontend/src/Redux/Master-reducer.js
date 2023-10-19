@@ -28,7 +28,6 @@ let masterReducer = (state = initialState, action) => {
             
             for(let j=0;j<stateCopy.workTime.length;j++){
                 let time = !!action.master[i].userRecords[recordseIndex];
-                console.log(time&& action.master[i].userRecords[recordseIndex].time===state.workTime[j]);
                 if(stateCopy.master[i]===undefined){
                     stateCopy.master.push({
                         userId: action.master[i].userId,

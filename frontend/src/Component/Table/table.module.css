@@ -25,6 +25,7 @@
 .tab{
     float: left;
     padding: 20px;
+    border: 100px;
   }
 
 .tdTime{
@@ -44,6 +45,12 @@
 }
 
 .tdSevice{
+    border: 1px solid grey;
+    width: 300px;
+    height: 10px;
+}
+
+.tdBut{
     border: 1px solid grey;
     width: 300px;
     height: 10px;
@@ -70,4 +77,31 @@
 
  .inputTable:focus {
     outline: none;
+}
+
+
+.but{
+    display: none;
+ }
+
+
+ .tdTimeForm{
+    border: 1px solid grey;
+    width: 100px;
+    height: 20px;
+    display: inline-block;
+}
+
+.tdClientForm{
+    border: 1px solid grey;
+    width: 200px;
+    height: 20px;
+    padding: 1px;
+}
+
+.tdSeviceForm{
+    border: 1px solid grey;
+    width: 300px;
+    height: 20px;
+    padding: 1px;
 }

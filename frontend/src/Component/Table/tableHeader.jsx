@@ -50,8 +50,8 @@ let TableHeader = (props) => {
             props.updateRecordsUser(usId, lineId, result, "01-01-2020", "02-01-2020")
         }
     }
-    let date = new Date();
-    console.log(date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear());//+"-"+getMonth()+"-"+getFullYear()
+    //let date = new Date();
+    //console.log(date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear());//+"-"+getMonth()+"-"+getFullYear()
     const onDelite = (lineId) => {
         props.deliteRecordsUser(usId, lineId, "01-01-2020", "02-01-2020");
         
